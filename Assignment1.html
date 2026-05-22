@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UX Design Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --card: #fffaf2;
+      --text: #24201c;
+      --muted: #6f665b;
+      --accent: #8c5e3c;
+      --accent-dark: #5f3d29;
+      --border: #ded3c4;
+      --shadow: 0 10px 28px rgba(73, 53, 35, 0.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    body.dark {
+      --bg: #171412;
+      --card: #241f1a;
+      --text: #f6efe6;
+      --muted: #c6b8a7;
+      --accent: #d79a67;
+      --accent-dark: #f0bd8e;
+      --border: #46392e;
+      --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    header {
+      min-height: 82vh;
+      display: grid;
+      place-items: center;
+      padding: 70px 24px;
+      background:
+        radial-gradient(circle at top left, rgba(140, 94, 60, 0.25), transparent 34%),
+        linear-gradient(145deg, #f3e6d4, #fffaf2 48%, #e7d8c2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.dark header {
+      background:
+        radial-gradient(circle at top left, rgba(215, 154, 103, 0.23), transparent 34%),
+        linear-gradient(145deg, #191512, #241f1a 48%, #31271f);
+    }
+
+    .hero {
+      max-width: 1060px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.95;
+      margin-bottom: 22px;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: var(--muted);
+      max-width: 660px;
+      margin-bottom: 24px;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--accent-dark);
+    }
+
+    body.dark .btn.secondary {
+      color: var(--accent-dark);
+    }
+
+    .mock-browser {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .browser-top {
+      height: 42px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 16px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .browser-content {
+      padding: 24px;
+    }
+
+    .wire-line {
+      height: 12px;
+      border-radius: 999px;
+      background: var(--border);
+      margin-bottom: 12px;
+    }
+
+    .wire-line.short { width: 60%; }
+    .wire-line.medium { width: 78%; }
+    .wire-line.long { width: 92%; }
+
+    .wire-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .wire-box {
+      aspect-ratio: 1.2;
+      border: 1px dashed var(--accent);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 250, 242, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.dark nav {
+      background: rgba(36, 31, 26, 0.9);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: bold;
+      color: var(--accent-dark);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .nav-links a, .nav-links button {
+      color: var(--text);
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .nav-links a:hover, .nav-links button:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 46px 24px;
+    }
+
+    section {
+      margin-bottom: 60px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      font-size: 34px;
+      margin-bottom: 12px;
+      color: var(--accent-dark);
+    }
+
+    .section-intro {
+      color: var(--muted);
+      max-width: 780px;
+      margin-bottom: 22px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .portrait {
+      height: 220px;
+      border-radius: 30px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, #d8c1a6, #fff4df);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 12px;
+      color: var(--accent-dark);
+      background: rgba(140, 94, 60, 0.07);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .step {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .step:hover,
+    .step.active {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      background: rgba(140, 94, 60, 0.08);
+    }
+
+    .step-number {
+      font-family: Arial, sans-serif;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .step h3 {
+      margin-bottom: 6px;
+    }
+
+    .step-detail {
+      margin-top: 18px;
+      padding: 18px;
+      border-left: 4px solid var(--accent);
+      background: rgba(140, 94, 60, 0.07);
+      border-radius: 12px;
+      color: var(--muted);
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 22px 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 14px;
+      cursor: pointer;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .case-card {
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--bg);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .case-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .case-visual {
+      min-height: 180px;
+      padding: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(140, 94, 60, 0.15), rgba(255, 250, 242, 0.8));
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.dark .case-visual {
+      background: linear-gradient(135deg, rgba(215, 154, 103, 0.15), rgba(36, 31, 26, 0.9));
+    }
+
+    .mini-screen {
+      width: 92%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      font-family: Arial, sans-serif;
+    }
+
+    .mini-title {
+      height: 13px;
+      width: 45%;
+      background: var(--accent);
+      border-radius: 99px;
+      margin-bottom: 12px;
+    }
+
+    .mini-row {
+      height: 10px;
+      background: var(--border);
+      border-radius: 99px;
+      margin: 8px 0;
+    }
+
+    .mini-row:nth-child(3) { width: 75%; }
+    .mini-row:nth-child(4) { width: 55%; }
+
+    .case-content {
+      padding: 22px;
+    }
+
+    .case-content h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .case-meta {
+      color: var(--muted);
+      font-size: 14px;
+      font-family: Arial, sans-serif;
+      margin-bottom: 10px;
+    }
+
+    .case-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .text-link {
+      color: var(--accent-dark);
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      border: none;
+      background: none;
+      padding: 0;
+    }
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .status {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 5px 10px;
+      color: var(--muted);
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.48);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.show {
+      display: flex;
+    }
+
+    .modal {
+      max-width: 640px;
+      background: var(--card);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .modal h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 18px;
+      top: 14px;
+      border: none;
+      background: none;
+      color: var(--text);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    .progress-wrap {
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      height: 13px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 25%;
+      background: var(--accent);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    footer {
+      text-align: center;
+      padding: 34px 20px 50px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+    }
+
+    @media (max-width: 800px) {
+      .hero,
+      .about-grid,
+      .case-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mock-browser {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 540px) {
+      section {
+        padding: 24px;
+      }
+
+      .process {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="top">
+    <div class="hero">
+      <div>
+        <div class="eyebrow">UX Design Portfolio</div>
+        <h1>Designing clearer digital experiences.</h1>
+        <p>
+          Hi, I am <strong>Arjun Hande</strong>. This portfolio documents my UX learning process, design decisions, and four upcoming case studies for my course projects.
+        </p>
+        <div class="button-row">
+          <a class="btn" href="#cases">View case studies</a>
+          <a class="btn secondary" href="#work">See my process</a>
+        </div>
+      </div>
+
+      <div class="mock-browser" aria-label="Decorative browser wireframe">
+        <div class="browser-top">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+        <div class="browser-content">
+          <div class="wire-line short"></div>
+          <div class="wire-line long"></div>
+          <div class="wire-line medium"></div>
+          <div class="wire-grid">
+            <div class="wire-box">About</div>
+            <div class="wire-box">Process</div>
+            <div class="wire-box">Cases</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Arjun Hande  / UX</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Process</a>
+        <a href="#cases">Case Studies</a>
+        <button id="themeToggle" type="button">Dark mode</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About me</h2>
+      <p class="section-intro">
+        This section introduces who I am, what I am learning, and the kind of design work I am interested in developing this semester.
+      </p>
+
+      <div class="about-grid">
+        <div class="portrait">
+          Optional photo area<br>
+          Replace this with an image later
+        </div>
+        <div>
+          <p>
+            My name is <strong>Arjun Hande</strong>, and I am currently learning UX design through a course-based project portfolio. I am interested in how design can make information easier to understand, especially when users need to complete a task quickly or make a decision.
+          </p>
+          <p>
+            I am still building my design experience, so this portfolio focuses on documenting my process clearly: what problem I am solving, who the users are, what design choices I made, and how feedback improves the final product.
+          </p>
+
+          <div class="tag-list">
+            <span class="tag">User-centered design</span>
+            <span class="tag">Wireframing</span>
+            <span class="tag">Accessibility</span>
+            <span class="tag">Usability testing</span>
+            <span class="tag">Visual hierarchy</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <h2>How I work</h2>
+      <p class="section-intro">
+        Click each step to see how I would explain my design workflow. This makes the portfolio more interactive while still showing a realistic student process.
+      </p>
+
+      <div class="process">
+        <article class="step active" data-detail="I start by defining the purpose of the design, the target users, and the main task the user needs to complete. This helps prevent the design from becoming only visual without solving a real problem.">
+          <div class="step-number">01</div>
+          <h3>Understand</h3>
+          <p>Clarify the problem and user needs.</p>
+        </article>
+
+        <article class="step" data-detail="I review similar websites or apps and look for patterns in layout, navigation, wording, and interaction. I use this research to understand what users may already expect.">
+          <div class="step-number">02</div>
+          <h3>Research</h3>
+          <p>Compare examples and collect ideas.</p>
+        </article>
+
+        <article class="step" data-detail="Before creating a polished design, I sketch layouts and low-fidelity wireframes. This helps me test structure, page flow, and content placement before focusing on colours or visuals.">
+          <div class="step-number">03</div>
+          <h3>Prototype</h3>
+          <p>Build rough layouts and test the flow.</p>
+        </article>
+
+        <article class="step" data-detail="I improve the design by checking usability, accessibility, visual hierarchy, consistency, and feedback from others. Later in the semester, I can connect this step to heuristic evaluation and user testing.">
+          <div class="step-number">04</div>
+          <h3>Evaluate</h3>
+          <p>Use feedback to make improvements.</p>
+        </article>
+      </div>
+
+      <div id="stepDetail" class="step-detail">
+        I start by defining the purpose of the design, the target users, and the main task the user needs to complete. This helps prevent the design from becoming only visual without solving a real problem.
+      </div>
+
+      <div class="progress-wrap" aria-label="Portfolio progress">
+        <div id="progressBar" class="progress-bar"></div>
+      </div>
+    </section>
+
+    <section id="cases">
+      <h2>Case studies</h2>
+      <p class="section-intro">
+        These are the four required project areas. The cards are currently placeholders, but they are structured like real case study entries so they can be updated later with final screenshots, links, and design reflections.
+      </p>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="service">Service</button>
+        <button class="filter-btn" data-filter="game">Game</button>
+        <button class="filter-btn" data-filter="commerce">E-commerce</button>
+        <button class="filter-btn" data-filter="data">Analytics</button>
+      </div>
+
+      <div class="case-grid">
+        <article class="case-card" data-category="service">
+          <div class="case-visual">
+            <div class="mini-screen">
+              <div class="mini-title"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+            </div>
+          </div>
+          <div class="case-content">
+            <div class="case-meta">Design 1 / Service website</div>
+            <h3>Dentist service site</h3>
+            <p>A future service website focused on appointment booking, service information, and trust-building content.</p>
+            <div class="case-actions">
+              <button class="text-link open-modal" data-title="Dentist service site" data-body="This future case study will focus on helping users quickly find services, understand clinic information, and book an appointment. I would evaluate the design by checking whether the navigation is clear and whether important actions are easy to find.">Preview details</button>
+              <span class="status">Coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card" data-category="game">
+          <div class="case-visual">
+            <div class="mini-screen">
+              <div class="mini-title"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+            </div>
+          </div>
+          <div class="case-content">
+            <div class="case-meta">Design 2 / Interaction design</div>
+            <h3>Memory game</h3>
+            <p>A future game interface focused on simple rules, immediate feedback, and clear progress indicators.</p>
+            <div class="case-actions">
+              <button class="text-link open-modal" data-title="Memory game" data-body="This future case study will focus on interaction feedback. I would consider how the user knows which cards are selected, when a match is correct, and how the game communicates score or progress.">Preview details</button>
+              <span class="status">Coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card" data-category="commerce">
+          <div class="case-visual">
+            <div class="mini-screen">
+              <div class="mini-title"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+            </div>
+          </div>
+          <div class="case-content">
+            <div class="case-meta">Design 3 / E-commerce</div>
+            <h3>Online store</h3>
+            <p>A future shopping website focused on product browsing, filtering, cart review, and checkout clarity.</p>
+            <div class="case-actions">
+              <button class="text-link open-modal" data-title="Online store" data-body="This future case study will focus on reducing friction in the shopping flow. I would look at product organization, filtering, product details, cart visibility, and checkout steps.">Preview details</button>
+              <span class="status">Coming soon</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="case-card" data-category="data">
+          <div class="case-visual">
+            <div class="mini-screen">
+              <div class="mini-title"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+              <div class="mini-row"></div>
+            </div>
+          </div>
+          <div class="case-content">
+            <div class="case-meta">Design 4 / Data visualization</div>
+            <h3>Analytics dashboard</h3>
+            <p>A future dashboard focused on organizing key metrics and making data easier to interpret.</p>
+            <div class="case-actions">
+              <button class="text-link open-modal" data-title="Analytics dashboard" data-body="This future case study will focus on information design. I would evaluate whether users can identify trends, compare values, and find the most important data without feeling overwhelmed.">Preview details</button>
+              <span class="status">Coming soon</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="close-modal" id="closeModal" type="button" aria-label="Close">&times;</button>
+      <h3 id="modalTitle">Case study title</h3>
+      <p id="modalBody">Case study details appear here.</p>
+    </div>
+  </div>
+
+
+  <script>
+    const themeToggle = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('portfolio-theme');
+
+    if (savedTheme === 'dark') {
+      document.body.classList.add('dark');
+      themeToggle.textContent = 'Light mode';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
+      localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+    });
+
+    const steps = document.querySelectorAll('.step');
+    const stepDetail = document.getElementById('stepDetail');
+    const progressBar = document.getElementById('progressBar');
+
+    steps.forEach((step, index) => {
+      step.addEventListener('click', () => {
+        steps.forEach(item => item.classList.remove('active'));
+        step.classList.add('active');
+        stepDetail.textContent = step.dataset.detail;
+        progressBar.style.width = ((index + 1) / steps.length) * 100 + '%';
+      });
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const caseCards = document.querySelectorAll('.case-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.dataset.filter;
+
+        caseCards.forEach(card => {
+          const shouldShow = filter === 'all' || card.dataset.category === filter;
+          card.style.display = shouldShow ? 'block' : 'none';
+        });
+      });
+    });
+
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const closeModal = document.getElementById('closeModal');
+    const modalButtons = document.querySelectorAll('.open-modal');
+
+    modalButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        modalTitle.textContent = button.dataset.title;
+        modalBody.textContent = button.dataset.body;
+        modalBackdrop.classList.add('show');
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modalBackdrop.classList.remove('show');
+    });
+
+    modalBackdrop.addEventListener('click', event => {
+      if (event.target === modalBackdrop) {
+        modalBackdrop.classList.remove('show');
+      }
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        modalBackdrop.classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html>
