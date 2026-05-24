@@ -1,875 +1,643 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional UX Design Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UX Portfolio - Arjun Hande</title>
 
+  -- SEG3125 Assignment 1 portfolio page
+  kept in one file because it is easier to submit on GitHub Pages for now
   <style>
-    :root {
-      --bg: #eef6ff;
-      --card: #ffffff;
-      --text: #172033;
-      --muted: #607089;
-      --accent: #2563eb;
-      --accent-dark: #1e3a8a;
-      --border: #c9dcf5;
-      --shadow: 0 10px 28px rgba(37, 99, 235, 0.14);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --blue:#2f6fba;
+      --darkblue:#173f6d;
+      --lightblue:#eaf3ff;
+      --verylight:#f7fbff;
+      --text:#222;
+      --muted:#5d6b7a;
+      --border:#bfd3ea;
     }
 
-    html {
-      scroll-behavior: smooth;
+    *{
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
+    body{
+      margin:0;
+      background:#f2f7fc;
+      color:var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height:1.55;
     }
 
-    body.dark {
-      --bg: #08111f;
-      --card: #101b2d;
-      --text: #eff6ff;
-      --muted: #b7c7dd;
-      --accent: #60a5fa;
-      --accent-dark: #93c5fd;
-      --border: #243b5f;
-      --shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    .page{
+      max-width:1050px;
+      margin:0 auto;
+      background:white;
+      min-height:100vh;
+      box-shadow:0 0 18px rgba(28,72,120,.12);
     }
 
-    header {
-      min-height: 82vh;
-      display: grid;
-      place-items: center;
-      padding: 70px 24px;
-      background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 34%),
-        linear-gradient(145deg, #dbeafe, #ffffff 48%, #bfdbfe);
-      border-bottom: 1px solid var(--border);
+    header{
+      background:linear-gradient(120deg, #dceeff, #ffffff 60%, #cfe3fb);
+      padding:42px 36px 34px;
+      border-bottom:4px solid var(--blue);
     }
 
-    body.dark header {
-      background:
-        radial-gradient(circle at top left, rgba(96, 165, 250, 0.24), transparent 34%),
-        linear-gradient(145deg, #07111f, #101b2d 48%, #172554);
+    .top-row{
+      display:flex;
+      justify-content:space-between;
+      gap:25px;
+      align-items:center;
     }
 
-    .hero {
-      max-width: 1060px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 42px;
-      align-items: center;
+    .intro-text{
+      max-width:650px;
     }
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      font-size: 13px;
-      font-weight: bold;
-      margin-bottom: 14px;
+    .course-label{
+      color:var(--darkblue);
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:bold;
+      margin-bottom:10px;
     }
 
-    h1 {
-      font-size: clamp(42px, 7vw, 82px);
-      line-height: 0.95;
-      margin-bottom: 22px;
+    h1{
+      margin:0 0 12px;
+      font-size:45px;
+      color:#12385f;
+      line-height:1.05;
     }
 
-    .hero p {
-      font-size: 19px;
-      color: var(--muted);
-      max-width: 660px;
-      margin-bottom: 24px;
+    .subtitle{
+      font-size:18px;
+      color:#40566b;
+      margin-bottom:20px;
     }
 
-    .button-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
+    .hero-buttons a{
+      display:inline-block;
+      margin-right:9px;
+      margin-bottom:8px;
+      padding:10px 15px;
+      border-radius:6px;
+      background:var(--blue);
+      color:white;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:14px;
     }
 
-    .btn {
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: white;
-      padding: 12px 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-family: Arial, sans-serif;
-      transition: transform 0.2s ease, background 0.2s ease;
+    .hero-buttons a.secondary{
+      background:white;
+      color:var(--darkblue);
+      border:1px solid var(--border);
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      background: var(--accent-dark);
+    .hero-buttons a:hover{
+      opacity:.85;
     }
 
-    .btn.secondary {
-      background: transparent;
-      color: var(--accent-dark);
+    .student-card{
+      width:245px;
+      background:white;
+      border:1px solid var(--border);
+      padding:18px;
+      border-radius:10px;
+      transform:rotate(1deg);
     }
 
-    body.dark .btn.secondary {
-      color: var(--accent-dark);
+    .photo-box{
+      height:150px;
+      border:2px dashed #92b6dc;
+      background:var(--lightblue);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:#4f6680;
+      margin-bottom:13px;
+      font-size:14px;
     }
 
-    .mock-browser {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transform: rotate(2deg);
+    .student-card p{
+      margin:5px 0;
+      font-size:14px;
     }
 
-    .browser-top {
-      height: 42px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 16px;
+    nav{
+      background:#12385f;
+      padding:12px 34px;
+      position:sticky;
+      top:0;
+      z-index:5;
     }
 
-    .dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-      background: var(--border);
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-right:22px;
+      font-size:15px;
     }
 
-    .browser-content {
-      padding: 24px;
+    nav a:hover{
+      text-decoration:underline;
     }
 
-    .wire-line {
-      height: 12px;
-      border-radius: 999px;
-      background: var(--border);
-      margin-bottom: 12px;
+    main{
+      padding:32px 36px 48px;
     }
 
-    .wire-line.short { width: 60%; }
-    .wire-line.medium { width: 78%; }
-    .wire-line.long { width: 92%; }
-
-    .wire-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .wire-box {
-      aspect-ratio: 1.2;
-      border: 1px dashed var(--accent);
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      color: var(--accent);
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    body.dark nav {
-      background: rgba(36, 31, 26, 0.9);
-    }
-
-    .nav-inner {
-      max-width: 1100px;
-      margin: auto;
-      padding: 14px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .logo {
-      font-weight: bold;
-      color: var(--accent-dark);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    .nav-links a, .nav-links button {
-      color: var(--text);
-      text-decoration: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font: inherit;
+    section{
+      margin-bottom:42px;
+      border-bottom:1px solid #d8e4f0;
+      padding-bottom:35px;
     }
 
-    .nav-links a:hover, .nav-links button:hover {
-      color: var(--accent);
+    section:last-child{
+      border-bottom:none;
     }
 
-    main {
-      max-width: 1100px;
-      margin: auto;
-      padding: 46px 24px;
+    h2{
+      font-size:30px;
+      color:var(--darkblue);
+      margin:0 0 12px;
     }
 
-    section {
-      margin-bottom: 60px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 34px;
-      box-shadow: var(--shadow);
+    h3{
+      color:#1f4e7f;
+      margin-bottom:8px;
     }
 
-    h2 {
-      font-size: 34px;
-      margin-bottom: 12px;
-      color: var(--accent-dark);
+    .note{
+      background:#f3f8ff;
+      border-left:5px solid var(--blue);
+      padding:12px 16px;
+      color:#43586e;
+      margin:18px 0;
     }
 
-    .section-intro {
-      color: var(--muted);
-      max-width: 780px;
-      margin-bottom: 22px;
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 26px;
-      align-items: center;
+    .small-list{
+      padding-left:20px;
     }
 
-    .portrait {
-      height: 220px;
-      border-radius: 30px;
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, #bfdbfe, #ffffff);
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--muted);
-      padding: 20px;
-      font-family: Arial, sans-serif;
+    .small-list li{
+      margin-bottom:8px;
     }
 
-    .tag-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
+    .tag-wrap{
+      margin-top:15px;
     }
 
-    .tag {
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 7px 12px;
-      color: var(--accent-dark);
-      background: rgba(37, 99, 235, 0.08);
-      font-family: Arial, sans-serif;
-      font-size: 14px;
+    .tag{
+      display:inline-block;
+      background:#e5f1ff;
+      color:#194a78;
+      border:1px solid #c5dbef;
+      padding:6px 10px;
+      border-radius:6px;
+      margin:0 6px 8px 0;
+      font-size:13px;
     }
 
-    .process {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 22px;
+    .process-boxes{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:13px;
+      margin-top:18px;
     }
 
-    .step {
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 18px;
-      cursor: pointer;
-      transition: 0.2s ease;
+    .process-card{
+      background:#f8fbff;
+      border:1px solid var(--border);
+      padding:16px;
+      border-radius:8px;
+      min-height:150px;
+      cursor:pointer;
     }
 
-    .step:hover,
-    .step.active {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      background: rgba(37, 99, 235, 0.10);
+    .process-card:hover{
+      background:#eaf3ff;
+      transform:translateY(-2px);
     }
 
-    .step-number {
-      font-family: Arial, sans-serif;
-      color: var(--accent);
-      font-weight: bold;
-      margin-bottom: 8px;
+    .process-card.active{
+      border:2px solid var(--blue);
+      background:#e6f1ff;
     }
 
-    .step h3 {
-      margin-bottom: 6px;
+    .num{
+      font-weight:bold;
+      color:var(--blue);
+      font-size:24px;
     }
 
-    .step-detail {
-      margin-top: 18px;
-      padding: 18px;
-      border-left: 4px solid var(--accent);
-      background: rgba(37, 99, 235, 0.08);
-      border-radius: 12px;
-      color: var(--muted);
+    #processText{
+      margin-top:15px;
+      padding:14px;
+      background:#f0f7ff;
+      border:1px solid var(--border);
+      border-radius:7px;
+      color:#41566d;
     }
 
-    .filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 22px 0;
-      font-family: Arial, sans-serif;
+    .filter-row{
+      margin:18px 0 20px;
     }
 
-    .filter-btn {
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--text);
-      border-radius: 999px;
-      padding: 9px 14px;
-      cursor: pointer;
+    .filter-row button{
+      border:1px solid #a9c5e3;
+      background:white;
+      color:#164675;
+      padding:8px 12px;
+      border-radius:5px;
+      margin-right:6px;
+      margin-bottom:7px;
+      cursor:pointer;
     }
 
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--accent);
-      color: white;
-      border-color: var(--accent);
+    .filter-row button.selected{
+      background:var(--blue);
+      color:white;
     }
 
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+    .case-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
     }
-
-    .case-card {
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      overflow: hidden;
-      background: var(--bg);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .case-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow);
-    }
-
-    .case-visual {
-      min-height: 180px;
-      padding: 18px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(255, 255, 255, 0.88));
-      border-bottom: 1px solid var(--border);
-    }
-
-    body.dark .case-visual {
-      background: linear-gradient(135deg, rgba(96, 165, 250, 0.16), rgba(16, 27, 45, 0.9));
-    }
-
-    .mini-screen {
-      width: 92%;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 16px;
-      font-family: Arial, sans-serif;
-    }
-
-    .mini-title {
-      height: 13px;
-      width: 45%;
-      background: var(--accent);
-      border-radius: 99px;
-      margin-bottom: 12px;
-    }
-
-    .mini-row {
-      height: 10px;
-      background: var(--border);
-      border-radius: 99px;
-      margin: 8px 0;
-    }
-
-    .mini-row:nth-child(3) { width: 75%; }
-    .mini-row:nth-child(4) { width: 55%; }
 
-    .case-content {
-      padding: 22px;
+    .case-card{
+      border:1px solid #bdd2e8;
+      border-radius:8px;
+      background:#fbfdff;
+      overflow:hidden;
     }
 
-    .case-content h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
+    .case-card:nth-child(3){
+      margin-top:8px;
     }
 
-    .case-meta {
-      color: var(--muted);
-      font-size: 14px;
-      font-family: Arial, sans-serif;
-      margin-bottom: 10px;
+    .case-link{
+      display:block;
+      text-decoration:none;
+      color:inherit;
     }
 
-    .case-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-top: 16px;
+    .case-img{
+      height:170px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-size:44px;
+      background:linear-gradient(135deg,#d9ecff,#ffffff);
+      border-bottom:1px solid #bdd2e8;
     }
 
-    .text-link {
-      color: var(--accent-dark);
-      font-weight: bold;
-      text-decoration: none;
-      cursor: pointer;
-      font-family: Arial, sans-serif;
-      border: none;
-      background: none;
-      padding: 0;
+    .case-body{
+      padding:17px;
     }
 
-    .text-link:hover {
-      text-decoration: underline;
+    .case-body p{
+      color:var(--muted);
+      margin-top:7px;
     }
 
-    .status {
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 5px 10px;
-      color: var(--muted);
+    .status{
+      display:inline-block;
+      margin-top:8px;
+      padding:4px 8px;
+      background:#eaf3ff;
+      color:#2d5e91;
+      border:1px solid #bdd2e8;
+      border-radius:4px;
+      font-size:13px;
     }
 
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.48);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 100;
+    .details-btn{
+      margin-top:11px;
+      background:#2f6fba;
+      border:none;
+      color:white;
+      padding:8px 11px;
+      border-radius:5px;
+      cursor:pointer;
     }
 
-    .modal-backdrop.show {
-      display: flex;
+    .details-btn:hover{
+      background:#245c9d;
     }
 
-    .modal {
-      max-width: 640px;
-      background: var(--card);
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      padding: 28px;
-      box-shadow: var(--shadow);
-      position: relative;
+    .holding-page{
+      display:none;
+      margin-top:24px;
+      padding:24px;
+      border:1px solid #bdd2e8;
+      background:#f6fbff;
+      border-radius:8px;
     }
 
-    .modal h3 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: var(--accent-dark);
+    .holding-page.show{
+      display:block;
     }
 
-    .close-modal {
-      position: absolute;
-      right: 18px;
-      top: 14px;
-      border: none;
-      background: none;
-      color: var(--text);
-      font-size: 28px;
-      cursor: pointer;
+    .holding-page h3{
+      margin-top:0;
     }
 
-    .progress-wrap {
-      margin-top: 20px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      height: 13px;
-      overflow: hidden;
-      background: var(--bg);
+    .back-top{
+      display:inline-block;
+      margin-top:10px;
+      color:#1c5e9d;
+      cursor:pointer;
+      text-decoration:underline;
     }
 
-    .progress-bar {
-      height: 100%;
-      width: 25%;
-      background: var(--accent);
-      border-radius: 999px;
-      transition: width 0.4s ease;
+    footer{
+      padding:22px 36px;
+      background:#12385f;
+      color:white;
+      font-size:14px;
     }
 
-    footer {
-      text-align: center;
-      padding: 34px 20px 50px;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
+    footer p{
+      margin:4px 0;
     }
 
-    @media (max-width: 800px) {
-      .hero,
-      .about-grid,
-      .case-grid {
-        grid-template-columns: 1fr;
+    @media(max-width:800px){
+      .top-row,.two-col,.case-grid{
+        grid-template-columns:1fr;
+        display:grid;
       }
 
-      .process {
-        grid-template-columns: 1fr 1fr;
+      .student-card{
+        width:100%;
+        transform:none;
       }
 
-      .mock-browser {
-        transform: none;
+      .process-boxes{
+        grid-template-columns:1fr 1fr;
       }
     }
 
-    @media (max-width: 540px) {
-      section {
-        padding: 24px;
+    @media(max-width:520px){
+      header,main,footer{
+        padding-left:20px;
+        padding-right:20px;
       }
 
-      .process {
-        grid-template-columns: 1fr;
+      h1{
+        font-size:34px;
       }
 
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
+      nav{
+        padding:10px 20px;
+      }
+
+      nav a{
+        display:inline-block;
+        margin-bottom:6px;
+      }
+
+      .process-boxes{
+        grid-template-columns:1fr;
       }
     }
   </style>
 </head>
 
 <body>
-  <header id="top">
-    <div class="hero">
-      <div>
-        <div class="eyebrow">Professional UX Design Portfolio</div>
-        <h1>Designing accessible and purposeful digital experiences.</h1>
+  <div class="page">
+    <header id="home">
+      <div class="top-row">
+        <div class="intro-text">
+          <div class="course-label">SEG3125 - Analysis and Design of User Interfaces</div>
+          <h1>Arjun's UX Portfolio</h1>
+          <p class="subtitle">
+            A first version of my portfolio for the designs I will build during the semester.
+          </p>
+          <div class="hero-buttons">
+            <a href="#about">About me</a>
+            <a class="secondary" href="#cases">View future case studies</a>
+          </div>
+        </div>
+
+        <div class="student-card">
+          <p><strong>Name:</strong> Arjun Hande</p>
+          <p><strong>Program:</strong> Computer Engineering / UI Design</p>
+          <p><strong>Focus:</strong> simple and usable interfaces</p>
+        </div>
+      </div>
+    </header>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#work">How I work</a>
+      <a href="#cases">Case studies</a>
+      <a href="#resources">References</a>
+    </nav>
+
+    <main>
+      <section id="about">
+        <h2>About me</h2>
+        <div class="two-col">
+          <div>
+            <p>
+              My name is <strong>Arjun Hande</strong>. I am currently taking a UI design course and this portfolio is my starting point for organizing the work I will complete this semester.
+            </p>
+            <p>
+              I am interested in websites that are practical, clear, and not frustrating to use.
+            </p>
+          </div>
+          <div class="note">
+            This is still an early version of the portfolio. I plan to update the case studies later when the course projects are finished and I have more design decisions to explain.
+          </div>
+        </div>
+
+        <div class="tag-wrap">
+          <span class="tag">HTML/CSS</span>
+          <span class="tag">JavaScript basics</span>
+          <span class="tag">Visual hierarchy</span>
+          <span class="tag">Layout</span>
+          <span class="tag">User-centred design</span>
+        </div>
+      </section>
+
+      <section id="work">
+        <h2>How I work</h2>
         <p>
-          My name is <strong>Arjun Hande</strong>. This portfolio presents my developing approach to UX design, including my design process, research considerations, and four course-based case studies.
+          I do not have professional design experience yet, but I am learning the design process through the course.
         </p>
-        <div class="button-row">
-          <a class="btn" href="#cases">View case studies</a>
-          <a class="btn secondary" href="#work">See my process</a>
+
+      <section id="cases">
+        <h2>4 future case studies</h2>
+        <p>
+          These four cards are placeholders for the assignments that will become full case studies later in the semester. Each image works as a link to a small holding section for now.
+        </p>
+
+      <div class="filter-row">
+          <button class="selected" data-filter="all">All</button>
+          <button data-filter="service">Service site</button>
+          <button data-filter="game">Memory game</button>
+          <button data-filter="shop">E-commerce</button>
+          <button data-filter="data">Analytics</button>
         </div>
-      </div>
-
-      <div class="mock-browser" aria-label="Decorative browser wireframe">
-        <div class="browser-top">
-          <span class="dot"></span>
-          <span class="dot"></span>
-          <span class="dot"></span>
-        </div>
-        <div class="browser-content">
-          <div class="wire-line short"></div>
-          <div class="wire-line long"></div>
-          <div class="wire-line medium"></div>
-          <div class="wire-grid">
-            <div class="wire-box">About</div>
-            <div class="wire-box">Process</div>
-            <div class="wire-box">Cases</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <nav>
-    <div class="nav-inner">
-      <div class="logo">Arjun Hande | UX Portfolio</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#work">Process</a>
-        <a href="#cases">Case Studies</a>
-        <button id="themeToggle" type="button">Dark mode</button>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <p class="section-intro">
-        This section provides a brief introduction to my background, current learning goals, and interest in user experience design.
-      </p>
-
-      <div class="about-grid">
-        <div class="portrait">
-          Optional professional photo<br>
-          Replace this placeholder as needed
-        </div>
-        <div>
-          <p>
-            My name is <strong>Arjun Hande</strong>, and I am currently developing my UX design skills through a course-based portfolio. I am particularly interested in creating digital interfaces that are clear, accessible, and efficient for users completing specific tasks.
-          </p>
-          <p>
-            As I continue to build my design experience, this portfolio emphasizes process documentation: identifying the problem, understanding the intended users, explaining design decisions, and using feedback to refine each solution.
-          </p>
-
-          <div class="tag-list">
-            <span class="tag">User-centered design</span>
-            <span class="tag">Wireframing</span>
-            <span class="tag">Accessibility</span>
-            <span class="tag">Usability testing</span>
-            <span class="tag">Visual hierarchy</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="work">
-      <h2>Design Process</h2>
-      <p class="section-intro">
-        The following workflow outlines how I approach UX design projects. Each step represents an important part of creating a user-centered and evidence-informed interface.
-      </p>
-
-      <div class="process">
-        <article class="step active" data-detail="I start by defining the purpose of the design, the target users, and the main task the user needs to complete. This helps prevent the design from becoming only visual without solving a real problem.">
-          <div class="step-number">01</div>
-          <h3>Understand</h3>
-          <p>Clarify the design problem and user needs.</p>
-        </article>
-
-        <article class="step" data-detail="I review similar websites or apps and look for patterns in layout, navigation, wording, and interaction. I use this research to understand what users may already expect.">
-          <div class="step-number">02</div>
-          <h3>Research</h3>
-          <p>Review comparable interfaces and design patterns.</p>
-        </article>
-
-        <article class="step" data-detail="Before creating a polished design, I sketch layouts and low-fidelity wireframes. This helps me test structure, page flow, and content placement before focusing on colours or visuals.">
-          <div class="step-number">03</div>
-          <h3>Prototype</h3>
-          <p>Create low-fidelity layouts and interaction flows.</p>
-        </article>
-
-        <article class="step" data-detail="I improve the design by checking usability, accessibility, visual hierarchy, consistency, and feedback from others. Later in the semester, I can connect this step to heuristic evaluation and user testing.">
-          <div class="step-number">04</div>
-          <h3>Evaluate</h3>
-          <p>Evaluate the design and refine the solution.</p>
-        </article>
-      </div>
-
-      <div id="stepDetail" class="step-detail">
-        I start by defining the purpose of the design, the target users, and the main task the user needs to complete. This helps prevent the design from becoming only visual without solving a real problem.
-      </div>
-
-      <div class="progress-wrap" aria-label="Portfolio progress">
-        <div id="progressBar" class="progress-bar"></div>
-      </div>
-    </section>
-
-    <section id="cases">
-      <h2>Case studies</h2>
-      <p class="section-intro">
-        The following case study areas represent the required course projects. These entries are currently structured as placeholders and can be updated later with final screens, project links, research findings, and design reflections.
-      </p>
-
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="service">Service</button>
-        <button class="filter-btn" data-filter="game">Game</button>
-        <button class="filter-btn" data-filter="commerce">E-commerce</button>
-        <button class="filter-btn" data-filter="data">Analytics</button>
-      </div>
 
       <div class="case-grid">
-        <article class="case-card" data-category="service">
-          <div class="case-visual">
-            <div class="mini-screen">
-              <div class="mini-title"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
+          <article class="case-card" data-type="service">
+            <a class="case-link" href="#hold-service" data-hold="hold-service">
+              <div class="case-img">🦷</div>
+            </a>
+            <div class="case-body">
+              <h3>Design 1: Service Site</h3>
+              <p>A future dentist service website with information about services, contact details, and appointment booking.</p>
+              <span class="status">holding page ready</span><br>
+              <button class="details-btn" data-hold="hold-service">Open placeholder</button>
             </div>
-          </div>
-          <div class="case-content">
-            <div class="case-meta">Design 1 / Service website</div>
-            <h3>Dentist service site</h3>
-            <p>A service website concept focused on appointment booking, service information, credibility, and clear navigation.</p>
-            <div class="case-actions">
-              <button class="text-link open-modal" data-title="Dentist service site" data-body="This future case study will focus on helping users quickly find services, understand clinic information, and book an appointment. I would evaluate the design by checking whether the navigation is clear and whether important actions are easy to find.">View details</button>
-              <span class="status">In progress</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="case-card" data-category="game">
-          <div class="case-visual">
-            <div class="mini-screen">
-              <div class="mini-title"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
+          <article class="case-card" data-type="game">
+            <a class="case-link" href="#hold-game" data-hold="hold-game">
+              <div class="case-img">🃏</div>
+            </a>
+            <div class="case-body">
+              <h3>Design 2: Memory Game</h3>
+              <p>A future memory game interface. I will focus on simple rules, clear buttons, and feedback after each choice.</p>
+              <span class="status">holding page ready</span><br>
+              <button class="details-btn" data-hold="hold-game">Open placeholder</button>
             </div>
-          </div>
-          <div class="case-content">
-            <div class="case-meta">Design 2 / Interaction design</div>
-            <h3>Memory game</h3>
-            <p>An interactive memory game concept focused on clear rules, immediate visual feedback, and progress tracking.</p>
-            <div class="case-actions">
-              <button class="text-link open-modal" data-title="Memory game" data-body="This future case study will focus on interaction feedback. I would consider how the user knows which cards are selected, when a match is correct, and how the game communicates score or progress.">View details</button>
-              <span class="status">In progress</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="case-card" data-category="commerce">
-          <div class="case-visual">
-            <div class="mini-screen">
-              <div class="mini-title"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
+          <article class="case-card" data-type="shop">
+            <a class="case-link" href="#hold-shop" data-hold="hold-shop">
+              <div class="case-img">🛒</div>
+            </a>
+            <div class="case-body">
+              <h3>Design 3: E-commerce Site</h3>
+              <p>A future online store design with product cards, filters, a cart, and a checkout path that is easy to follow.</p>
+              <span class="status">holding page ready</span><br>
+              <button class="details-btn" data-hold="hold-shop">Open placeholder</button>
             </div>
-          </div>
-          <div class="case-content">
-            <div class="case-meta">Design 3 / E-commerce</div>
-            <h3>Online store</h3>
-            <p>An e-commerce interface concept focused on product discovery, filtering, cart review, and checkout clarity.</p>
-            <div class="case-actions">
-              <button class="text-link open-modal" data-title="Online store" data-body="This future case study will focus on reducing friction in the shopping flow. I would look at product organization, filtering, product details, cart visibility, and checkout steps.">View details</button>
-              <span class="status">In progress</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="case-card" data-category="data">
-          <div class="case-visual">
-            <div class="mini-screen">
-              <div class="mini-title"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
-              <div class="mini-row"></div>
+          <article class="case-card" data-type="data">
+            <a class="case-link" href="#hold-data" data-hold="hold-data">
+              <div class="case-img">📊</div>
+            </a>
+            <div class="case-body">
+              <h3>Design 4: Analytics Site</h3>
+              <p>A future dashboard or BI page that presents data clearly using charts, summaries, and visual hierarchy.</p>
+              <span class="status">holding page ready</span><br>
+              <button class="details-btn" data-hold="hold-data">Open placeholder</button>
             </div>
-          </div>
-          <div class="case-content">
-            <div class="case-meta">Design 4 / Data visualization</div>
-            <h3>Analytics dashboard</h3>
-            <p>An analytics dashboard concept focused on organizing key metrics and supporting quick interpretation of data.</p>
-            <div class="case-actions">
-              <button class="text-link open-modal" data-title="Analytics dashboard" data-body="This future case study will focus on information design. I would evaluate whether users can identify trends, compare values, and find the most important data without feeling overwhelmed.">View details</button>
-              <span class="status">In progress</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+          </article>
+        </div>
 
-  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
-      <button class="close-modal" id="closeModal" type="button" aria-label="Close">&times;</button>
-      <h3 id="modalTitle">Case study title</h3>
-      <p id="modalBody">Case study details appear here.</p>
-    </div>
+        <div id="hold-service" class="holding-page">
+          <h3>Design 1 holding page - Service Site</h3>
+          <p>This page will later link to my service site project. For now, it is a placeholder for a dentist or similar appointment-based service website.</p>
+          <span class="back-top">Back to cards</span>
+        </div>
+
+        <div id="hold-game" class="holding-page">
+          <h3>Design 2 holding page - Memory Game</h3>
+          <p>This section will later link to my memory game. I plan to focus on matching cards, scoring, and simple feedback for the user.</p>
+          <span class="back-top">Back to cards</span>
+        </div>
+
+        <div id="hold-shop" class="holding-page">
+          <h3>Design 3 holding page - E-commerce Site</h3>
+          <p>This section will later link to my e-commerce design. The main focus will be browsing, comparing products, and checkout flow.</p>
+          <span class="back-top">Back to cards</span>
+        </div>
+
+        <div id="hold-data" class="holding-page">
+          <h3>Design 4 holding page - Analytics Site</h3>
+          <p>This section will later link to my analytics design. The goal will be to organize numbers and charts so the user can understand the information quickly.</p>
+          <span class="back-top">Back to cards</span>
+        </div>
+      </section>
+
+      <section id="resources">
+        <h2>Course and design references</h2>
+        <p>
+          These are references I can use while developing the portfolio and future projects. I will add more as the semester continues.
+        </p>
+        <ul class="small-list">
+          <li><a href="https://www.w3schools.com/html/" target="_blank">W3Schools HTML tutorial</a></li>
+          <li><a href="https://www.w3schools.com/css/" target="_blank">W3Schools CSS tutorial</a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Arjun Hande</strong> - SEG3125 Portfoloi Entry Page</p>
+      <p>Made with HTML, CSS, and a small amount of JavaScript. Version 1, Summer 2026.</p>
+    </footer>
   </div>
 
-
   <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('portfolio-theme');
+    // Small JS interactions for the portfolio page
+    const processCards = document.querySelectorAll('.process-card');
+    const processText = document.getElementById('processText');
 
-    if (savedTheme === 'dark') {
-      document.body.classList.add('dark');
-      themeToggle.textContent = 'Light mode';
-    }
-
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      themeToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
-      localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
-    });
-
-    const steps = document.querySelectorAll('.step');
-    const stepDetail = document.getElementById('stepDetail');
-    const progressBar = document.getElementById('progressBar');
-
-    steps.forEach((step, index) => {
-      step.addEventListener('click', () => {
-        steps.forEach(item => item.classList.remove('active'));
-        step.classList.add('active');
-        stepDetail.textContent = step.dataset.detail;
-        progressBar.style.width = ((index + 1) / steps.length) * 100 + '%';
+    processCards.forEach(function(card){
+      card.addEventListener('click', function(){
+        processCards.forEach(function(c){ c.classList.remove('active'); });
+        card.classList.add('active');
+        processText.textContent = card.dataset.text;
       });
     });
 
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    const filterButtons = document.querySelectorAll('.filter-row button');
     const caseCards = document.querySelectorAll('.case-card');
 
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        const filter = button.dataset.filter;
-
-        caseCards.forEach(card => {
-          const shouldShow = filter === 'all' || card.dataset.category === filter;
-          card.style.display = shouldShow ? 'block' : 'none';
+    filterButtons.forEach(function(button){
+      button.addEventListener('click', function(){
+        filterButtons.forEach(function(b){ b.classList.remove('selected'); });
+        button.classList.add('selected');
+        const choice = button.dataset.filter;
+    
+        caseCards.forEach(function(card){
+          if(choice === 'all' || card.dataset.type === choice){
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
         });
       });
     });
 
-    const modalBackdrop = document.getElementById('modalBackdrop');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalBody = document.getElementById('modalBody');
-    const closeModal = document.getElementById('closeModal');
-    const modalButtons = document.querySelectorAll('.open-modal');
+    const holdLinks = document.querySelectorAll('[data-hold]');
+    const holdingPages = document.querySelectorAll('.holding-page');
 
-    modalButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        modalTitle.textContent = button.dataset.title;
-        modalBody.textContent = button.dataset.body;
-        modalBackdrop.classList.add('show');
+    holdLinks.forEach(function(link){
+      link.addEventListener('click', function(event){
+        event.preventDefault();
+        const target = link.dataset.hold;
+
+        holdingPages.forEach(function(page){
+          page.classList.remove('show');
+        });
+
+        document.getElementById(target).classList.add('show');
+        document.getElementById(target).scrollIntoView({ behavior:'smooth' });
       });
     });
 
-    closeModal.addEventListener('click', () => {
-      modalBackdrop.classList.remove('show');
-    });
-
-    modalBackdrop.addEventListener('click', event => {
-      if (event.target === modalBackdrop) {
-        modalBackdrop.classList.remove('show');
-      }
-    });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') {
-        modalBackdrop.classList.remove('show');
-      }
+    document.querySelectorAll('.back-top').forEach(function(back){
+      back.addEventListener('click', function(){
+        document.getElementById('cases').scrollIntoView({ behavior:'smooth' });
+      });
     });
   </script>
 </body>
